@@ -15,6 +15,9 @@ import Profile from "../screens/Profile";
 import Register from "../screens/Register";
 import Elements from "../screens/Elements";
 import Articles from "../screens/Articles";
+import Signin from "../screens/authentication/Signin";
+import Signup from "../screens/authentication/Signup";
+
 // drawer
 import CustomDrawerContent from "./Menu";
 
@@ -38,10 +41,10 @@ function ElementsStack(props) {
           header: ({ navigation, scene }) => (
             <Header title="Elements" navigation={navigation} scene={scene} />
           ),
-          cardStyle: { backgroundColor: "#F8F9FE" }
+          cardStyle: { backgroundColor: "#F8F9FE" },
         }}
       />
-            <Stack.Screen
+      <Stack.Screen
         name="Pro"
         component={Pro}
         options={{
@@ -55,7 +58,7 @@ function ElementsStack(props) {
               scene={scene}
             />
           ),
-          headerTransparent: true
+          headerTransparent: true,
         }}
       />
     </Stack.Navigator>
@@ -72,10 +75,10 @@ function ArticlesStack(props) {
           header: ({ navigation, scene }) => (
             <Header title="Articles" navigation={navigation} scene={scene} />
           ),
-          cardStyle: { backgroundColor: "#F8F9FE" }
+          cardStyle: { backgroundColor: "#F8F9FE" },
         }}
       />
-            <Stack.Screen
+      <Stack.Screen
         name="Pro"
         component={Pro}
         options={{
@@ -89,7 +92,7 @@ function ArticlesStack(props) {
               scene={scene}
             />
           ),
-          headerTransparent: true
+          headerTransparent: true,
         }}
       />
     </Stack.Navigator>
@@ -113,10 +116,10 @@ function ProfileStack(props) {
             />
           ),
           cardStyle: { backgroundColor: "#FFFFFF" },
-          headerTransparent: true
+          headerTransparent: true,
         }}
       />
-            <Stack.Screen
+      <Stack.Screen
         name="Pro"
         component={Pro}
         options={{
@@ -130,7 +133,7 @@ function ProfileStack(props) {
               scene={scene}
             />
           ),
-          headerTransparent: true
+          headerTransparent: true,
         }}
       />
     </Stack.Navigator>
@@ -147,13 +150,13 @@ function HomeStack(props) {
           header: ({ navigation, scene }) => (
             <Header
               title="Home"
-              search
-              options
+              // search
+              // options
               navigation={navigation}
               scene={scene}
             />
           ),
-          cardStyle: { backgroundColor: "#F8F9FE" }
+          cardStyle: { backgroundColor: "#F8F9FE" },
         }}
       />
       <Stack.Screen
@@ -170,7 +173,7 @@ function HomeStack(props) {
               scene={scene}
             />
           ),
-          headerTransparent: true
+          headerTransparent: true,
         }}
       />
     </Stack.Navigator>
@@ -179,13 +182,27 @@ function HomeStack(props) {
 
 export default function OnboardingStack(props) {
   return (
-    <Stack.Navigator mode="card" headerMode="none">
+    <Stack.Navigator
+      mode="card"
+      headerMode="none"
+      initialRouteName="Onboarding"
+    >
       <Stack.Screen
         name="Onboarding"
         component={Onboarding}
         option={{
-          headerTransparent: true
+          headerTransparent: true,
         }}
+      />
+      <Stack.Screen
+        name="Signin"
+        component={Signin}
+        options={{ headerShown: false, gestureEnabled: false }}
+      />
+      <Stack.Screen
+        name="Signup"
+        component={Signup}
+        options={{ headerShown: false }}
       />
       <Stack.Screen name="App" component={AppStack} />
     </Stack.Navigator>
@@ -196,10 +213,10 @@ function AppStack(props) {
   return (
     <Drawer.Navigator
       style={{ flex: 1 }}
-      drawerContent={props => <CustomDrawerContent {...props} />}
+      drawerContent={(props) => <CustomDrawerContent {...props} />}
       drawerStyle={{
         backgroundColor: "white",
-        width: width * 0.8
+        width: width * 0.8,
       }}
       drawerContentOptions={{
         activeTintcolor: "white",
@@ -213,13 +230,13 @@ function AppStack(props) {
           justifyContent: "center",
           alignContent: "center",
           alignItems: "center",
-          overflow: "hidden"
+          overflow: "hidden",
         },
         labelStyle: {
           fontSize: 18,
           marginLeft: 12,
-          fontWeight: "normal"
-        }
+          fontWeight: "normal",
+        },
       }}
       initialRouteName="Home"
     >
@@ -231,4 +248,3 @@ function AppStack(props) {
     </Drawer.Navigator>
   );
 }
-
