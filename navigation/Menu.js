@@ -3,8 +3,16 @@ import { useSafeArea } from "react-native-safe-area-context";
 import { ScrollView, StyleSheet, Image } from "react-native";
 import { Block, Text, theme } from "galio-framework";
 
+import { Button } from "native-base";
+
+import Signout from "../screens/authentication/Signout";
+
 import Images from "../constants/Images";
 import { DrawerItem as DrawerCustomItem } from "../components";
+
+function CustomDrawerSignout({ navigation }) {
+  return <Signout navigation={navigation} />;
+}
 
 function CustomDrawerContent({
   drawerPosition,
@@ -52,6 +60,7 @@ function CustomDrawerContent({
             </Text>
           </Block>
           <DrawerCustomItem title="Getting Started" navigation={navigation} />
+          <Signout />
         </ScrollView>
       </Block>
     </Block>

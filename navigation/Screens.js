@@ -70,7 +70,7 @@ function ArticlesStack(props) {
     <Stack.Navigator mode="card" headerMode="screen">
       <Stack.Screen
         name="Articles"
-        component={Articles}
+        component={Signin}
         options={{
           header: ({ navigation, scene }) => (
             <Header title="Articles" navigation={navigation} scene={scene} />
@@ -182,7 +182,11 @@ function HomeStack(props) {
 
 export default function OnboardingStack(props) {
   return (
-    <Stack.Navigator mode="card" headerMode="none" initialRouteName="App">
+    <Stack.Navigator
+      mode="card"
+      headerMode="none"
+      initialRouteName="Onboarding"
+    >
       <Stack.Screen
         name="Onboarding"
         component={Onboarding}
