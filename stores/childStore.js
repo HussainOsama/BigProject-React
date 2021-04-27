@@ -22,14 +22,11 @@ class ChildStore {
     });
   }
 
-  fetchChilds = async () => {
+  fetchChilds = async (userId) => {
     try {
-      console.log("UserId below");
-      console.log(authStore.user.id);
-      const response = await instance.get(`/child/${authStore.user.id}`);
+      const response = await instance.get(`/child/${userId}`);
       this.childs = response.data;
       this.loading = false;
-      console.log(this.childs);
     } catch (error) {
       console.error("ChildStore --> fetchChild --> Error", error);
     }
@@ -37,6 +34,6 @@ class ChildStore {
 }
 
 const childStore = new ChildStore();
-childStore.fetchChilds();
+// childStore.fetchChilds();
 
 export default childStore;

@@ -1,9 +1,7 @@
-
 //import styled from "styled-components/native";
 // import progressImg from "../assets/progressImg.png";
 
 import styled from "styled-components";
-
 
 export const AppView = styled.View`
   flex: 1;
@@ -139,7 +137,6 @@ export const CardSection = styled.View`
   align-items: center;
 `;
 //------------ Progress Card -----------------
-
 
 export const InfoBoxWrapper = styled.View`
   border-bottom-color: #dddddd;

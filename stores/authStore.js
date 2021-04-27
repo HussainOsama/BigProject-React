@@ -2,6 +2,7 @@ import { observable, makeAutoObservable, action } from "mobx";
 import decode from "jwt-decode";
 import instance from "./instance";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import childStore from "./childStore";
 
 class AuthStore {
   user = [];
@@ -31,6 +32,7 @@ class AuthStore {
     instance.defaults.headers.common.Authorization = `Bearer ${token}`;
     // fetchUser();
     this.user = decode(token);
+    childStore.fetchChilds(this.user.id);
     console.log(this.user);
   };
 
@@ -54,6 +56,13 @@ class AuthStore {
       console.log("AuthStore -> signin -> error", error);
     }
   };
+
+  signout = () => {
+    this.user = null;
+    delete instance.defaults.headers.common.Authorization;
+    AsyncStorage.removeItem("myToken");
+  };
+
   checkForToken = async () => {
     const token = await AsyncStorage.getItem("myToken");
 
