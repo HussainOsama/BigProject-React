@@ -70,7 +70,7 @@ function ArticlesStack(props) {
     <Stack.Navigator mode="card" headerMode="screen">
       <Stack.Screen
         name="Articles"
-        component={Articles}
+        component={Signin}
         options={{
           header: ({ navigation, scene }) => (
             <Header title="Articles" navigation={navigation} scene={scene} />
