@@ -1,5 +1,12 @@
-import React from "react";
-import { StyleSheet, Dimensions, ScrollView, Text, View } from "react-native";
+import React, { useState, useEffect } from "react";
+import {
+  StyleSheet,
+  Dimensions,
+  ScrollView,
+  Text,
+  View,
+  CameraRoll,
+} from "react-native";
 import { Block, theme } from "galio-framework";
 import FloatingButton from "../components/floatingButton/FloatingButton";
 import Cards from "../components/progressCard/Card";
@@ -13,13 +20,40 @@ import { ImageBackground } from "react-native";
 const { width } = Dimensions.get("screen");
 import bg from "../assets/imgs/bg.png";
 import { ExpenseTitle, IncomeTitle } from "../Styled/styled";
+import QRCode from "react-native-qrcode-svg";
+import { BarCodeScanner } from "expo-barcode-scanner";
+import * as Permissions from "expo-permissions";
 
 function Home() {
+  const [cameraPermission, setCameraPermission] = useState(false);
+  const [count, setCount] = useState(0);
+
+  requestCameraPermission = async () => {
+    const { status } = await Permissions.askAsync(Permissions.CAMERA);
+    setCameraPermission(status === "granted");
+  };
+  useEffect(() => {
+    requestCameraPermission();
+  }, []);
   return (
     <ImageBackground
       style={{ flex: 1, width: "100%", height: "100%" }}
       source={require("../assets/imgs/bg.png")}
     >
+      <QRCode value="http://google.com" />
+      {cameraPermission ? (
+        <BarCodeScanner
+          onBarCodeScanned={() => {
+            setCount(count + 1);
+            console.log(count);
+          }}
+          style={{
+            height: "50%",
+            width: "50%",
+          }}
+        />
+      ) : null}
+
       <Block flex style={styles.home}>
         <Cards />
         <ExpenseTitle>Expenses</ExpenseTitle>
