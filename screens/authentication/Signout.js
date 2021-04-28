@@ -2,11 +2,13 @@ import React from "react";
 import { AuthButton, AuthButtonText } from "../../Styled/styled";
 import authStore from "../../stores/authStore";
 import { observer } from "mobx-react";
+import { useNavigation } from "@react-navigation/native";
 
-function Signout({ navigation }) {
+function Signout() {
+  const navigation = useNavigation();
   const handleSubmit = async () => {
     await authStore.signout();
-    navigation.replace("Signout");
+    navigation.replace("Signin");
   };
 
   return (
