@@ -3,8 +3,6 @@ import { useSafeArea } from "react-native-safe-area-context";
 import { ScrollView, StyleSheet, Image } from "react-native";
 import { Block, Text, theme } from "galio-framework";
 
-import { Button } from "native-base";
-
 import Signout from "../screens/authentication/Signout";
 
 import Images from "../constants/Images";
