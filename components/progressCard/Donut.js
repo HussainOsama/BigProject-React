@@ -1,17 +1,19 @@
 import * as React from "react";
 import { Easing, TextInput, Animated, View, StyleSheet } from "react-native";
 import Svg, { G, Circle } from "react-native-svg";
+import reactstore from "../../stores/reactStore";
 const AnimatedTextInput = Animated.createAnimatedComponent(TextInput);
+import { observer } from "mobx-react";
 
-export default function Donut({
-  percentage = 300,
+function Donut({
+  percentage = reactstore.total,
   radius = 70,
   strokeWidth = 10,
   duration = 500,
   color = "tomato",
   delay = 0,
   textColor,
-  max = 1000, //Total Salary + Income
+  max = reactstore.salary + reactstore.income,
 }) {
   const animated = React.useRef(new Animated.Value(0)).current;
   const circleRef = React.useRef();
@@ -27,7 +29,7 @@ export default function Donut({
       useNativeDriver: true,
       easing: Easing.out(Easing.ease),
     }).start(() => {
-      animation(toValue === 0 ? percentage : percentage);
+      animation(toValue === 0 ? percentage : reactstore.total);
     });
   };
 
@@ -103,6 +105,8 @@ export default function Donut({
     </View>
   );
 }
+
+export default observer(Donut);
 
 const styles = StyleSheet.create({
   text: { fontWeight: "900", textAlign: "center" },

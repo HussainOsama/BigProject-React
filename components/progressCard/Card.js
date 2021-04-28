@@ -12,8 +12,13 @@ import {
   CardSection,
 } from "../../Styled/styled";
 import Donut from "./Donut";
+import reactStore from "../../stores/reactStore";
+import { observer } from "mobx-react";
 
 function Card() {
+  let income = reactStore.income;
+  let expenses = reactStore.expenses;
+  let salary = reactStore.salary;
   return (
     <MainView>
       <ProgressCard
@@ -23,15 +28,15 @@ function Card() {
         <MainCard>
           <LeftPart>
             <CardSection>
-              <Income>000000</Income>
-              <Text style={{ color: "#517501" }}>Income</Text>
+              <Income>{income} KD</Income>
+              <Text style={{ color: "#517501" }}>Extra Income</Text>
             </CardSection>
             <CardSection>
-              <Expenses>00000000</Expenses>
+              <Expenses>{expenses} KD</Expenses>
               <Text style={{ color: "#fb0f5a" }}>Expenses</Text>
             </CardSection>
             <CardSection>
-              <Salary>00000</Salary>
+              <Salary>{salary} KD</Salary>
               <Text style={{ color: "white" }}>Salary</Text>
             </CardSection>
           </LeftPart>
@@ -46,4 +51,4 @@ function Card() {
   );
 }
 
-export default Card;
+export default observer(Card);

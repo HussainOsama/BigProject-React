@@ -62,7 +62,7 @@ export const Message = styled.Text`
 
 //------------ Progress Card -----------------
 export const MainView = styled.View`
-  flex: 1;
+  /* flex: 1; */
   align-items: center;
   border-radius: 40px;
 `;
@@ -71,6 +71,8 @@ export const ProgressCard = styled.ImageBackground`
   height: 250px;
   background-color: red;
   margin-top: 40px;
+  margin-bottom: 50px;
+
   border-radius: 40px;
 `;
 
@@ -162,4 +164,18 @@ export const ChildNameCaption = styled.Text`
   line-height: 14;
   font-weight: 500;
   margin-top: 10;
+`;
+
+export const ExpenseTitle = styled.Text`
+  text-align: center;
+  font-size: 25px;
+  color: white;
+  font-weight: 700;
+`;
+
+export const IncomeTitle = styled.Text`
+  text-align: center;
+  font-size: 25px;
+  color: white;
+  font-weight: 700;
 `;

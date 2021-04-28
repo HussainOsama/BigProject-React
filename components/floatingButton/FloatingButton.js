@@ -3,11 +3,13 @@ import { FloatingAction } from "react-native-floating-action";
 import { Text, TextInput, View } from "react-native";
 import { Alert, Modal, StyleSheet, Pressable } from "react-native";
 import { RadioButton } from "react-native-paper";
+import { observer } from "mobx-react";
+import reactstore from "../../stores/reactStore";
 
 function FloatingButton() {
   const actions = [
     {
-      text: "Income",
+      text: "Transaction",
       icon: require("../../assets/add.png"),
       name: "print",
       position: 2,
@@ -18,6 +20,7 @@ function FloatingButton() {
   const [modalVisible, setModalVisible] = useState(false);
   const [value, setValue] = useState("");
   const [checked, setChecked] = React.useState("Income");
+  const [Category, setCategory] = React.useState("");
 
   return (
     <>
@@ -38,6 +41,10 @@ function FloatingButton() {
             <TextInput
               placeholder="Value"
               onChangeText={(value) => setValue(value)}
+            />
+            <TextInput
+              placeholder="Category"
+              onChangeText={(Category) => setCategory(Category)}
             />
             <View>
               <Text>Income</Text>
@@ -60,12 +67,24 @@ function FloatingButton() {
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => {
-                console.log(value);
-                console.log(checked);
+                // console.log(checked);
+                // console.log(Category);
+                // console.log(value);
+                console.log("befor " + reactstore.Other);
+                if (checked == "Income") {
+                  reactstore.addIncome(parseInt(value));
+                } else if (checked == "expense") {
+                  reactstore.addExpenses(parseInt(value));
+                  reactstore.catExpense(Category, parseInt(value));
+                  console.log("After " + reactstore.Other);
+                }
+                // console.log(value);
+                // console.log(reactstore.Other);
+
                 setModalVisible(!modalVisible);
               }}
             >
-              <Text style={styles.textStyle}>Hide Modal</Text>
+              <Text style={styles.textStyle}>Submit</Text>
             </Pressable>
           </View>
         </View>
@@ -123,4 +142,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default FloatingButton;
+export default observer(FloatingButton);
