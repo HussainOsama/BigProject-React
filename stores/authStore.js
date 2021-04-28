@@ -20,17 +20,15 @@ class AuthStore {
       const response = await instance.get("/");
       this.user = response.data;
       this.loading = false;
-      console.log(this.user);
+      // console.log(this.user);
     } catch (error) {
       console.error("AuthStore --> fetchUser --> Error", error);
     }
   };
 
   setUser = async (token) => {
-    console.log("I'm here in setUser");
     await AsyncStorage.setItem("myToken", token);
     instance.defaults.headers.common.Authorization = `Bearer ${token}`;
-    // fetchUser();
     this.user = decode(token);
     childStore.fetchChilds(this.user.id);
     console.log(this.user);
@@ -38,6 +36,7 @@ class AuthStore {
 
   signup = async (userData) => {
     try {
+      console.log("signup");
       const res = await instance.post("/signup", userData);
       this.setUser(res.data.token);
       console.log(decode(res.data.token));
