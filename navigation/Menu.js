@@ -21,7 +21,7 @@ function CustomDrawerContent({
   ...rest
 }) {
   const insets = useSafeArea();
-  const screens = ["Home", "Profile", "Account"];
+  const screens = ["Home", "Profile", "Create Child Account"];
   // "Elements" "Articles"
   return (
     <Block
@@ -61,9 +61,7 @@ function CustomDrawerContent({
 
           {/* <DrawerCustomItem title="Getting Started" navigation={navigation} /> */}
 
-
           <Signout />
-
         </ScrollView>
       </Block>
     </Block>

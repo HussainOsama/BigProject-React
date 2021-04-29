@@ -48,6 +48,9 @@ function Signin({ navigation }) {
       <AuthOther onPress={() => navigation.navigate("Signup")}>
         Click here to Sign up!
       </AuthOther>
+      <AuthOther onPress={() => navigation.navigate("ScanQrCode")}>
+        Scan QR code for Child Sign in
+      </AuthOther>
     </AuthContainer>
   );
 }
