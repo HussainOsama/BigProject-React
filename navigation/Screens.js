@@ -17,6 +17,7 @@ import Elements from "../screens/Elements";
 import Articles from "../screens/Articles";
 import Signin from "../screens/authentication/Signin";
 import Signup from "../screens/authentication/Signup";
+import ScanQrCode from "../screens/authentication/ScanQrCode";
 
 // drawer
 import CustomDrawerContent from "./Menu";
@@ -199,6 +200,11 @@ export default function OnboardingStack(props) {
         name="Signup"
         component={Signup}
         options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="ScanQrCode"
+        component={ScanQrCode}
+        options={{ headerShown: false, gestureEnabled: false }}
       />
       <Stack.Screen name="App" component={AppStack} />
     </Stack.Navigator>

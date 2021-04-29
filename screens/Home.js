@@ -23,7 +23,7 @@ import { ExpenseTitle, IncomeTitle } from "../Styled/styled";
 import QRCode from "react-native-qrcode-svg";
 import { BarCodeScanner } from "expo-barcode-scanner";
 import * as Permissions from "expo-permissions";
-
+import ScanQrCode from "./authentication/ScanQrCode";
 function Home() {
   const [cameraPermission, setCameraPermission] = useState(false);
   const [count, setCount] = useState(0);
@@ -41,18 +41,6 @@ function Home() {
       source={require("../assets/imgs/bg.png")}
     >
       <QRCode value="http://google.com" />
-      {cameraPermission ? (
-        <BarCodeScanner
-          onBarCodeScanned={() => {
-            setCount(count + 1);
-            console.log(count);
-          }}
-          style={{
-            height: "50%",
-            width: "50%",
-          }}
-        />
-      ) : null}
 
       <Block flex style={styles.home}>
         <Cards />
