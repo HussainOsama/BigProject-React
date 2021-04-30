@@ -13,6 +13,8 @@ import { Button, Icon, Input } from "../components";
 import { Images, argonTheme } from "../constants";
 import { set } from "mobx";
 
+import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
+
 const { width, height } = Dimensions.get("screen");
 
 function Register() {
@@ -59,11 +61,11 @@ function Register() {
                       borderless
                       placeholder="Name"
                       iconContent={
-                        <Icon
+                        <MaterialCommunityIcons
                           size={16}
                           color={argonTheme.COLORS.ICON}
-                          name="hat-3"
-                          family="ArgonExtra"
+                          name="human-male-child"
+                          family="MaterialCommunityIcons"
                           style={styles.inputIcons}
                         />
                       }
@@ -75,11 +77,11 @@ function Register() {
                       borderless
                       placeholder="Allowance"
                       iconContent={
-                        <Icon
+                        <MaterialIcons
                           size={16}
                           color={argonTheme.COLORS.ICON}
-                          name="ic_mail_24px"
-                          family="ArgonExtra"
+                          name="attach-money"
+                          family="MaterialIcons"
                           style={styles.inputIcons}
                         />
                       }

@@ -18,6 +18,7 @@ import Articles from "../screens/Articles";
 import Signin from "../screens/authentication/Signin";
 import Signup from "../screens/authentication/Signup";
 import ScanQrCode from "../screens/authentication/ScanQrCode";
+import ChildHome from "../screens/ChildHome";
 
 // drawer
 import CustomDrawerContent from "./Menu";
@@ -183,7 +184,11 @@ function HomeStack(props) {
 
 export default function OnboardingStack(props) {
   return (
-    <Stack.Navigator mode="card" headerMode="none" initialRouteName="App">
+    <Stack.Navigator
+      mode="card"
+      headerMode="none"
+      initialRouteName="Onboarding"
+    >
       <Stack.Screen
         name="Onboarding"
         component={Onboarding}
@@ -209,6 +214,11 @@ export default function OnboardingStack(props) {
       <Stack.Screen
         name="Register"
         component={Register}
+        options={{ headerShown: false, gestureEnabled: false }}
+      />
+      <Stack.Screen
+        name="ChildHome"
+        component={ChildHome}
         options={{ headerShown: false, gestureEnabled: false }}
       />
       <Stack.Screen name="App" component={AppStack} />
