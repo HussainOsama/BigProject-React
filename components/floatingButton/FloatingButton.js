@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { FloatingAction } from "react-native-floating-action";
 import { Text, TextInput, View } from "react-native";
-import { Alert, Modal, StyleSheet, Pressable } from "react-native";
+import { Alert, Modal, StyleSheet, Pressable, Picker } from "react-native";
 import { RadioButton } from "react-native-paper";
 import { observer } from "mobx-react";
 import reactstore from "../../stores/reactStore";
+import RNPickerSelect from "react-native-picker-select";
 
 function FloatingButton() {
   const actions = [
@@ -37,15 +38,26 @@ function FloatingButton() {
       >
         <View style={styles.centeredView}>
           <View style={styles.modalView}>
-            {/* <Text style={styles.modalText}>Hello World!</Text> */}
             <TextInput
               placeholder="Value"
               onChangeText={(value) => setValue(value)}
             />
-            <TextInput
+            {/* <TextInput
               placeholder="Category"
               onChangeText={(Category) => setCategory(Category)}
-            />
+            /> */}
+            <View>
+              <RNPickerSelect
+                onValueChange={(Category) => setCategory(Category)}
+                items={[
+                  { label: "Gym", value: "Gym" },
+                  { label: "Supermatket", value: "Supermatket" },
+                  { label: "Telephone", value: "Telephone" },
+                  { label: "Restaurants", value: "Restaurants" },
+                  { label: "Other", value: "Other" },
+                ]}
+              />
+            </View>
             <View>
               <Text>Income</Text>
 
@@ -67,9 +79,6 @@ function FloatingButton() {
             <Pressable
               style={[styles.button, styles.buttonClose]}
               onPress={() => {
-                // console.log(checked);
-                // console.log(Category);
-                // console.log(value);
                 console.log("befor " + reactstore.Other);
                 if (checked == "Income") {
                   reactstore.addIncome(parseInt(value));
@@ -78,8 +87,6 @@ function FloatingButton() {
                   reactstore.catExpense(Category, parseInt(value));
                   console.log("After " + reactstore.Other);
                 }
-                // console.log(value);
-                // console.log(reactstore.Other);
 
                 setModalVisible(!modalVisible);
               }}
@@ -139,6 +146,11 @@ const styles = StyleSheet.create({
   modalText: {
     marginBottom: 15,
     textAlign: "center",
+  },
+  container: {
+    flex: 1,
+    paddingTop: 40,
+    alignItems: "center",
   },
 });
 
