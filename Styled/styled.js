@@ -5,7 +5,16 @@ import styled from "styled-components";
 
 export const AppView = styled.View`
   flex: 1;
-  background-color: #fff;
+
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ChildContainer = styled.View`
+  display: flex;
+  width: 400px;
+  height: 400px;
+
   align-items: center;
   justify-content: center;
 `;
@@ -24,6 +33,14 @@ export const AuthTitle = styled.Text`
   font-size: 24px;
   margin-bottom: 20px;
   border-bottom-color: black;
+`;
+
+export const ChildTitle = styled.Text`
+  color: yellow;
+  font-size: 45px;
+  font-weight: bold;
+
+  margin-bottom: 20px;
 `;
 
 export const AuthTextInput = styled.TextInput`

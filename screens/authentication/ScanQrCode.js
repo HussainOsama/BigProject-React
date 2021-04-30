@@ -3,7 +3,7 @@ import { BarCodeScanner } from "expo-barcode-scanner";
 import * as Permissions from "expo-permissions";
 import { Text, View } from "react-native";
 
-function ScanQrCode() {
+function ScanQrCode({ navigation }) {
   const [cameraPermission, setCameraPermission] = useState(false);
   const [count, setCount] = useState(0);
 
@@ -19,8 +19,7 @@ function ScanQrCode() {
       {cameraPermission ? (
         <BarCodeScanner
           onBarCodeScanned={() => {
-            setCount(count + 1);
-            console.log(count);
+            navigation.navigate("ChildHome");
           }}
           style={{
             height: "100%",
