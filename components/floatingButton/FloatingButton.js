@@ -41,6 +41,7 @@ function FloatingButton() {
             <TextInput
               placeholder="Value"
               onChangeText={(value) => setValue(value)}
+              style={{ marginBottom: "10%" }}
             />
             {/* <TextInput
               placeholder="Category"
@@ -58,7 +59,7 @@ function FloatingButton() {
                 ]}
               />
             </View>
-            <View>
+            <View style={{ marginTop: "10%" }}>
               <Text>Income</Text>
 
               <RadioButton
@@ -66,6 +67,7 @@ function FloatingButton() {
                 color="green"
                 status={checked === "Income" ? "checked" : "unchecked"}
                 onPress={() => setChecked("Income")}
+                style={{ textAlign: "center" }}
               />
               <Text>Expense</Text>
               <RadioButton

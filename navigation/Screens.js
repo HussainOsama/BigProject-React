@@ -152,13 +152,13 @@ function HomeStack(props) {
           header: ({ navigation, scene }) => (
             <Header
               title="Home"
-              // search
-              // options
+              transparent
               navigation={navigation}
               scene={scene}
             />
           ),
           cardStyle: { backgroundColor: "#F8F9FE" },
+          headerTransparent: true,
         }}
       />
       <Stack.Screen
@@ -184,11 +184,7 @@ function HomeStack(props) {
 
 export default function OnboardingStack(props) {
   return (
-    <Stack.Navigator
-      mode="card"
-      headerMode="none"
-      initialRouteName="Onboarding"
-    >
+    <Stack.Navigator mode="card" headerMode="none" initialRouteName="App">
       <Stack.Screen
         name="Onboarding"
         component={Onboarding}
