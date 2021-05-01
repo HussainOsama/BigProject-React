@@ -120,19 +120,12 @@ class Header extends React.Component {
               family="entypo"
               size={20}
               onPress={this.handleLeftPress}
-              color={
-                iconColor ||
-                (white ? argonTheme.COLORS.WHITE : argonTheme.COLORS.ICON)
-              }
+              color={argonTheme.COLORS.WHITE}
               style={{ marginTop: 2 }}
             />
           }
           leftStyle={{ paddingVertical: 12, flex: 0.2 }}
-          titleStyle={[
-            styles.title,
-            { color: argonTheme.COLORS[white ? "WHITE" : "HEADER"] },
-            titleColor && { color: titleColor },
-          ]}
+          titleStyle={[styles.title]}
           {...props}
         />
         {this.renderHeader()}
@@ -150,6 +143,7 @@ const styles = StyleSheet.create({
     width: "100%",
     fontSize: 16,
     fontWeight: "bold",
+    color: "white",
   },
   navbar: {
     paddingVertical: 0,

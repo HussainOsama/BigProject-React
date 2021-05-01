@@ -9,6 +9,7 @@ import { observer } from "mobx-react";
 import { ImageBackground } from "react-native";
 const { width } = Dimensions.get("screen");
 import { ExpenseTitle, IncomeTitle } from "../Styled/styled";
+import { ScrollView } from "react-native-gesture-handler";
 
 function Home() {
   return (
@@ -17,11 +18,16 @@ function Home() {
         style={{ flex: 1, width: "100%", height: "100%" }}
         source={require("../assets/imgs/bg.png")}
       >
-        <Cards />
-        <ExpenseTitle>Expenses</ExpenseTitle>
-        <Expense />
-        <IncomeTitle>Extra Income</IncomeTitle>
-        <Income />
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          style={{ width, marginTop: "20%" }}
+        >
+          <Cards />
+          <ExpenseTitle>Expenses</ExpenseTitle>
+          <Expense />
+          <IncomeTitle>Extra Income</IncomeTitle>
+          <Income />
+        </ScrollView>
 
         <FloatingButton />
       </ImageBackground>
