@@ -184,7 +184,11 @@ function HomeStack(props) {
 
 export default function OnboardingStack(props) {
   return (
-    <Stack.Navigator mode="card" headerMode="none" initialRouteName="App">
+    <Stack.Navigator
+      mode="card"
+      headerMode="none"
+      initialRouteName="Onboarding"
+    >
       <Stack.Screen
         name="Onboarding"
         component={Onboarding}

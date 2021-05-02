@@ -27,9 +27,13 @@ class Onboarding extends React.Component {
           />
         </Block>
         <Block center>
-          <Text color="white" size={60}>
+          <Image
+            style={styles.stretch}
+            source={require("../assets/imgs/Baizat.png")}
+          />
+          {/* <Text color="white" size={60}>
             Budget+
-          </Text>
+          </Text> */}
           {/* <Image source={Images.LogoOnboarding} style={styles.logo} /> */}
         </Block>
         <Block flex space="between" style={styles.padded}>
@@ -78,6 +82,7 @@ const styles = StyleSheet.create({
     height: theme.SIZES.BASE * 3,
     shadowRadius: 0,
     shadowOpacity: 0,
+    marginTop: 300,
   },
   logo: {
     width: 200,
@@ -91,6 +96,11 @@ const styles = StyleSheet.create({
   },
   subTitle: {
     marginTop: 20,
+  },
+  stretch: {
+    width: 300,
+    height: 150,
+    resizeMode: "cover",
   },
 });
 
